@@ -2,6 +2,8 @@
 
 다 받아 주는 squid proxy
 
+## config
+
 ``` sh
 $ cat squid.conf
 # https://stackoverflow.com/a/42901717
@@ -16,4 +18,12 @@ refresh_pattern ^gopher:	1440	0%	1440
 refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
 refresh_pattern (Release|Packages(.gz)*)$      0       20%     2880
 refresh_pattern .		0	20%	4320
+```
+
+## example
+
+``` sh
+docker run --name "squid" -d \
+    --publish 3128:3128 \
+    docker.io/leoh0/allowallsquid
 ```
